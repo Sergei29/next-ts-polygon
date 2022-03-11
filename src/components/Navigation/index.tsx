@@ -18,6 +18,18 @@ const Navigation = () => (
         {name}
       </NavLink>
     ))}
+    <a
+      sx={{
+        color: 'text',
+        fontSize: 3,
+        cursor: 'pointer',
+      }}
+      href={process.env.NEXT_PUBLIC_INFO_URL}
+      target='_blank'
+      rel='noreferrer'
+    >
+      Help
+    </a>
   </nav>
 );
 

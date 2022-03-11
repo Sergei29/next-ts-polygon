@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import React from 'react';
 import type { NextPage, GetStaticProps } from 'next';
 import Page from '../src/containers/Page';
 
@@ -9,6 +10,15 @@ type Props = {
 };
 
 const Home: NextPage<Props> = ({ content }) => {
+  console.log(
+    'hidden on browser, visible on server :>> ',
+    process.env.SECRET_URL_SERVER_SIDE,
+  );
+  console.log(
+    'visible on browser, visible on server :>> ',
+    process.env.NEXT_PUBLIC_INFO_URL,
+  );
+
   return (
     <Page>
       <div
