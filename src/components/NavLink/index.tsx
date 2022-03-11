@@ -1,3 +1,4 @@
+/** @jsxImportSource theme-ui */
 import React from 'react';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,7 +9,15 @@ const NavLink: React.FC<LinkProps> = ({ children, ...restLinkProps }) => {
 
   return (
     <Link {...restLinkProps}>
-      <a sx={{ fontWeight: isActive ? 600 : 400 }}>{children}</a>
+      <a
+        sx={{
+          fontSize: isActive ? 4 : 3,
+          fontWeight: isActive ? 600 : 400,
+          cursor: 'pointer',
+        }}
+      >
+        {children}
+      </a>
     </Link>
   );
 };

@@ -4,7 +4,15 @@ import { navLinks } from '../../constants';
 import NavLink from '../NavLink';
 
 const Navigation = () => (
-  <nav sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+  <nav
+    sx={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      variant: 'containers.page',
+      height: '100%',
+    }}
+  >
     {navLinks.map(({ id, path, name }) => (
       <NavLink key={id} href={path}>
         {name}

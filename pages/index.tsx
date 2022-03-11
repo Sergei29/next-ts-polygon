@@ -1,19 +1,26 @@
+/** @jsxImportSource theme-ui */
 import type { NextPage, GetStaticProps } from 'next';
-import Navigation from '../src/components/Navigation';
+import Page from '../src/containers/Page';
 
 type Props = {
   content: {
-    main: string;
-    footer: string;
+    h1: string;
   };
 };
 
 const Home: NextPage<Props> = ({ content }) => {
   return (
-    <>
-      <Navigation />
-      <div>{content.main}</div>
-    </>
+    <Page>
+      <div
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          height: '100%',
+        }}
+      >
+        <h1 sx={{ fontSize: 8, my: 0 }}>{content.h1}</h1>
+      </div>
+    </Page>
   );
 };
 
@@ -21,8 +28,7 @@ export const getStaticProps: GetStaticProps = () => {
   return {
     props: {
       content: {
-        main: 'main content',
-        footer: 'footer content',
+        h1: 'This is a really dope note taking app.',
       },
     },
   };
