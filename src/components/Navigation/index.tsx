@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
-import React from 'react';
-import { navLinks } from '../../constants';
-import NavLink from '../NavLink';
+import React from 'react'
+import { navLinks } from '../../constants'
+import NavLink from '../NavLink'
 
 const Navigation = () => (
   <nav
@@ -25,12 +25,12 @@ const Navigation = () => (
         cursor: 'pointer',
       }}
       href={process.env.NEXT_PUBLIC_INFO_URL}
-      target='_blank'
-      rel='noreferrer'
+      target="_blank"
+      rel="noreferrer"
     >
       Help
     </a>
   </nav>
-);
+)
 
-export default Navigation;
+export default Navigation

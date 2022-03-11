@@ -1,9 +1,9 @@
-const nextEnv = require('next-env');
-const dotenvLoad = require('dotenv-load');
+const nextEnv = require('next-env')
+const dotenvLoad = require('dotenv-load')
 
-dotenvLoad();
+dotenvLoad()
 
-const withNextEnv = nextEnv();
+const withNextEnv = nextEnv()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = (phase, { defaultConfig }) => {
@@ -11,9 +11,9 @@ const nextConfig = (phase, { defaultConfig }) => {
     ...defaultConfig,
     reactStrictMode: true,
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-      return config;
+      return config
     },
-  };
-};
+  }
+}
 
-module.exports = withNextEnv(nextConfig);
+module.exports = withNextEnv(nextConfig)

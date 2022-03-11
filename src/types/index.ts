@@ -1,13 +1,13 @@
 export type Note = {
-  id: string;
-  title: string;
-};
+  id: string
+  title: string
+}
 
 export type ErrorResponse = {
-  message: string;
-  status: number;
-};
+  message: string
+  status: number
+}
 
-type ID = string;
+type ID = string
 
-export type ApiResponse = { data?: Note[] | Note | ID; error?: ErrorResponse };
+export type ApiResponse = { data?: Note[] | Note | ID; error?: ErrorResponse }

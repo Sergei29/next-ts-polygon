@@ -1,11 +1,11 @@
 /** @jsxImportSource theme-ui */
-import React from 'react';
-import Link, { LinkProps } from 'next/link';
-import { useRouter } from 'next/router';
+import React from 'react'
+import Link, { LinkProps } from 'next/link'
+import { useRouter } from 'next/router'
 
 const NavLink: React.FC<LinkProps> = ({ children, ...restLinkProps }) => {
-  const { pathname } = useRouter();
-  const isActive = pathname === restLinkProps.href;
+  const { pathname } = useRouter()
+  const isActive = pathname === restLinkProps.href
 
   return (
     <Link {...restLinkProps}>
@@ -19,7 +19,7 @@ const NavLink: React.FC<LinkProps> = ({ children, ...restLinkProps }) => {
         {children}
       </a>
     </Link>
-  );
-};
+  )
+}
 
-export default NavLink;
+export default NavLink

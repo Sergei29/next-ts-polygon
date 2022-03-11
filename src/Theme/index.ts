@@ -1,5 +1,5 @@
-import { roboto } from '@theme-ui/presets';
-import { Theme } from 'theme-ui';
+import { roboto } from '@theme-ui/presets'
+import { Theme } from 'theme-ui'
 
 export const theme: Theme & Record<string, any> = {
   ...roboto,
@@ -21,4 +21,4 @@ export const theme: Theme & Record<string, any> = {
   styles: {
     ...roboto.styles,
   },
-};
+}
