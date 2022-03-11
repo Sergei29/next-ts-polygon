@@ -1,11 +1,11 @@
 /** @jsxImportSource theme-ui */
 import Page from '../../src/containers/Page'
 import NavLink from '../../src/components/NavLink'
+import { useNotes } from '../../src/hooks/useNotes'
 
 const Notes = () => {
-  const notes = new Array(15)
-    .fill(1)
-    .map((e, i) => ({ id: i, title: `Note: ${i}` }))
+  const { data: notes, error } = useNotes()
+
   return (
     <Page>
       <h1>My Notes</h1>
@@ -24,6 +24,7 @@ const Notes = () => {
             </NavLink>
           </div>
         ))}
+        {error && <p sx={{ color: 'red', textAlign: 'center' }}>{error}</p>}
       </div>
     </Page>
   )
