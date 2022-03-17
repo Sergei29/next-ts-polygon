@@ -1,5 +1,6 @@
 import { JsonDB } from 'node-json-db'
 import { Config } from 'node-json-db/dist/lib/JsonDBConfig'
+import { v4 as uuidv4 } from 'uuid'
 import { Note } from '../src/types'
 
 const PATH_TO_NOTES = '/notes'
@@ -16,9 +17,10 @@ export const saveNotes = (notes: Note[]) => {
 export const getNoteById = (id: string) =>
   getAllNotes().find((note) => note.id === id) || null
 
-export const addNewNote = (newNote: Note) => {
+export const addNewNote = (noteData: Partial<Note>) => {
   const currentNotes = db.getData(PATH_TO_NOTES) || []
-  const updatedNotes = [...currentNotes, newNote]
+  const newNote = { ...noteData, id: uuidv4() }
+  const updatedNotes = [...currentNotes, { ...newNote, id: uuidv4() }]
   saveNotes(updatedNotes)
   return newNote
 }
