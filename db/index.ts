@@ -1,6 +1,6 @@
 import { JsonDB } from 'node-json-db'
 import { Config } from 'node-json-db/dist/lib/JsonDBConfig'
-import { Note } from '../types'
+import { Note } from '../src/types'
 
 const PATH_TO_NOTES = '/notes'
 
