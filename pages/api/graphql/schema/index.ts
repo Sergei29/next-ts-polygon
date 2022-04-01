@@ -21,7 +21,7 @@ export const typeDefs = gql`
 
   type Mutation {
     addNote(note: NoteData!): Note
-    deleteNoteById(id: ID!): ID
+    deleteNoteById(id: ID!): Note
     updateNote(note: NoteDataExisting!): Note
   }
 `
