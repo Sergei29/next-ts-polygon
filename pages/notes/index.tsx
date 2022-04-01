@@ -1,15 +1,21 @@
 import React from 'react'
-import { useQuery } from '@apollo/client'
+import { GetServerSideProps } from 'next'
 import { GET_ALL_NOTES } from '../../src/apollo/queries'
+import { apolloClient } from '../../src/apollo/apolloClient'
 import { Note } from '../../src/types'
 import Page from '../../src/containers/Page'
 
-const Notes = () => {
-  const { data, loading, error } = useQuery<{ getNotes: Note[] }>(GET_ALL_NOTES)
-
+type Props = {
+  data:
+    | {
+        getNotes: Note[]
+      }
+    | undefined
+  errorMessage: null | string
+}
+const Notes = ({ data, errorMessage }: Props) => {
   const renderResults = () => {
-    if (loading) return <p>Loading notes...</p>
-    if (error) return <p>Error: {error.message}</p>
+    if (errorMessage) return <p>Error: {errorMessage}</p>
     if (!!data && data.getNotes.length === 0) return <p>no notes</p>
     return data!.getNotes.map((note) => (
       <div key={note.id}>
@@ -23,6 +29,16 @@ const Notes = () => {
       <div>{renderResults()}</div>
     </Page>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { data, error } = await apolloClient.query({
+    query: GET_ALL_NOTES,
+  })
+
+  return {
+    props: { data, error: error?.message || null },
+  }
 }
 
 export default Notes
