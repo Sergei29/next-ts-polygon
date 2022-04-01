@@ -14,6 +14,7 @@ export const GET_NOTE_BY_ID = gql`
     getNoteById(id: $id) {
       id
       title
+      description
     }
   }
 `

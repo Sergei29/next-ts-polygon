@@ -11,7 +11,10 @@ export const ADD_NEW_NOTE = gql`
 
 export const DELETE_NOTE_BY_ID = gql`
   mutation DeleteNoteById($id: ID!) {
-    deleteNoteById(id: $id)
+    deleteNoteById(id: $id) {
+      id
+      title
+    }
   }
 `
 
@@ -20,6 +23,7 @@ export const UPDATE_NOTE = gql`
     updateNote(note: $note) {
       id
       title
+      description
     }
   }
 `

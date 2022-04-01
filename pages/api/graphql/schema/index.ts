@@ -1,17 +1,20 @@
 import { gql } from 'apollo-server-micro'
 
 export const typeDefs = gql`
-  input NoteData {
+  input NoteDataNew {
     title: String!
+    description: String!
   }
   input NoteDataExisting {
     id: ID!
     title: String
+    description: String
   }
 
   type Note {
     id: ID!
-    title: String
+    title: String!
+    description: String!
   }
 
   type Query {
@@ -20,7 +23,7 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    addNote(note: NoteData!): Note
+    addNote(note: NoteDataNew!): Note
     deleteNoteById(id: ID!): Note
     updateNote(note: NoteDataExisting!): Note
   }
