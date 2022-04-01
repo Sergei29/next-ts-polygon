@@ -1,5 +1,7 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
+import { useRouter } from 'next/router'
+import { Button } from 'theme-ui'
 import { GET_ALL_NOTES } from '../../src/apollo/queries'
 import { apolloClient } from '../../src/apollo/apolloClient'
 import { Note } from '../../src/types'
@@ -14,19 +16,35 @@ type Props = {
   errorMessage: null | string
 }
 const Notes = ({ data, errorMessage }: Props) => {
+  const router = useRouter()
   const renderResults = () => {
     if (errorMessage) return <p>Error: {errorMessage}</p>
     if (!!data && data.getNotes.length === 0) return <p>no notes</p>
     return data!.getNotes.map((note) => (
-      <div key={note.id}>
-        <h3>{note.title}</h3>
-      </div>
+      <Button
+        key={note.id}
+        onClick={() => router.push(`notes/${note.id}`)}
+        sx={{ cursor: 'pointer', fontSize: 22, fontWeight: 800 }}
+        bg="secondary"
+      >
+        {note.title}
+      </Button>
     ))
   }
   return (
     <Page>
       <h1 sx={{ fontSize: 8, my: 0 }}>Notes</h1>
-      <div>{renderResults()}</div>
+      <div
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '8px',
+        }}
+      >
+        {renderResults()}
+      </div>
     </Page>
   )
 }
@@ -37,7 +55,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   })
 
   return {
-    props: { data, error: error?.message || null },
+    props: { data, errorMessage: error?.message || null },
   }
 }
 
